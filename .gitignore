@@ -3,3 +3,4 @@ src/rag/__pycache__/
 src/scheduler/__pycache__/
 cache.zip
 cache/
+push_to_github.sh

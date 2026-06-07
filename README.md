@@ -18,6 +18,7 @@ AI分野では毎日のように新しい研究成果が発表されます。し
 ---
 
 ## アーキテクチャ
+
 Docker Service ４つが HTTP requestでイベント駆動
 
 ```
@@ -27,11 +28,12 @@ Docker Service
 ├── rag                                    # uiからqueryが来たらRAGのデータベースを元に回答を作成し、uiに返す。
 └── scheduler                              # 定時にknowledgebaseに実行命令を出す。
 ```
-詳細なDocker Service同士のarchitecture
-![Slide](architecture1.png)
 
+詳細なDocker Service同士のarchitecture
+Slide
 
 RAGは
+
 1. LLMでqueryの言語を検出し、英語でなければ英語に直す。
 2. LLMでqueryをベクトル検索用とキーワード検索用にリライト。
 3. ベクトル検索(BAAI/bge-base-en-v1.5)で上位5件の論文、キーワード検索(substring)でベクトル検索でヒットしなかったものから上位5件の論文を取り出す。
@@ -40,14 +42,15 @@ RAGは
 
 以下がRAGのarchitecture
 
-![Slide](architecture2.png)
-
+Slide
 
 ## ディレクトリ構造
 
 ```
 ai-paper-rag/
 ├── README.md　　　　　　　　　　　　　　　　　         # プロジェクト全体を説明するこのファイル
+├── LISENCE　　　　　　　　　                        # MIT License
+├── .gitignore                                    # Git によるバージョン管理から除外したいファイルやディレクトリ一覧
 ├── run_dockers.sh                                # docker-compose.yml に定義されたサービスを、Dockerfile からイメージをビルドして起動するシェルスクリプト
 ├── docker-compose.yml                            # knowledgebase ・ rag ・ scheduler ・ ui サービスを定義するファイル
 ├── src/
