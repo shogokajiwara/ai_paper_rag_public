@@ -39,6 +39,7 @@ RAGは
 5. 4の結果をLLMでまとめて、1で検出した言語に直し、4で関係あると判定された論文とともに結果を出力
 
 以下がRAGのarchitecture
+
 ![Slide](architecture2.png)
 
 
