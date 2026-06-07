@@ -18,14 +18,29 @@ AI分野では毎日のように新しい研究成果が発表されます。し
 ---
 
 ## アーキテクチャ
+Docker Service ４つが HTTP requestでイベント駆動
 
-Slide
+```
+Docker Service
+├── ui　　　　　　　　　　　　　　　　　         # uiを駆動。  
+├── knowledgebase                          # schedulerからの定時実行命令が来たらRAGのデータベースを更新。 
+├── rag                                    # uiからqueryが来たらRAGのデータベースを元に回答を作成し、uiに返す。
+└── scheduler                              # 定時にknowledgebaseに実行命令を出す。
+```
+詳細なDocker Service同士のarchitecture
+![Slide](architecture1.png)
 
-Docker  
-├── ui　　　　　　　　　　　　　　　　　         # プロジェクト全体を説明す  
-├── knowledgebase                          # プロジェクト全体を説明するこのファイル  
-├── rag                                    # プロジェクト全体を説明するこのファイル  
-└── scheduler                              # プロジェクト全体を説明するこのファイル
+
+RAGは
+1.LLMでqueryの言語を検出し、英語でなければ英語に直す。
+2.LLMでqueryをベクトル検索用とキーワード検索用にリライト。
+3.ベクトル検索(BAAI/bge-base-en-v1.5)で上位5件の論文、キーワード検索(substring)でベクトル検索でヒットしなかったものから上位5件の論文を取り出す。
+4.3で取り出された論文をLLMでqueryに関係あるか判定させ、関係あるもののみ、queryに対する回答を抽出、要約。
+5.4の結果をLLMでまとめて、1で検出した言語に直し、4で関係あると判定された論文とともに結果を出力
+
+以下がRAGのarchitecture
+![Slide](architecture2.png)
+
 
 ## ディレクトリ構造
 
