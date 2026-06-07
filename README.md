@@ -76,10 +76,10 @@ ai-paper-rag/
     │   ├── Dockerfile                    # Dockerfile for RAG service
     │   ├── main.py                       # RAGサービスのFastAPIアプリ
     │   └── requirements.txt              # RAGサービスの依存関係
-    ├── scheduler/                 # 知識ベース更新を定期実行するサービス
-    │   └── Dockerfile                    # Dockerfile for scheduler service
-    ├── main.py                       # schedulerサービスのメインアプリ
-    ├── requirements.txt              # schedulerサービスの依存関係
+    ├── scheduler/                        # 知識ベース更新を定期実行するサービス
+    │   ├── Dockerfile                    # Dockerfile for scheduler service
+    │   ├── main.py                       # schedulerサービスのメインアプリ
+    │   ├── requirements.txt              # schedulerサービスの依存関係
     │   └── run_task.py                   # スケジュールされたタスクの実行ロジック
     └── ui/
         ├── Dockerfile                    # UI アプリをコンテナ化するための設定ファイル。ビルド手順や実行環境を定義する。
