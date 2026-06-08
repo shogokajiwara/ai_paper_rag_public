@@ -29,7 +29,8 @@ Docker Service
 └── scheduler                              # 定時にknowledgebaseに実行命令を出す。
 ```
 
-詳細なDocker Service同士のarchitecture  
+詳細なDocker Service同士のarchitecture
+![Figure](architecture1.png)
 
 Docker architecture
 RAGは
@@ -42,7 +43,7 @@ RAGは
 
 以下がRAGのarchitecture
 
-RAG architecture
+![Figure](architecture2.png)
 
 ## ディレクトリ構造
 
