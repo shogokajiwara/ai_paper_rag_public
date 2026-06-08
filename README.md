@@ -31,7 +31,7 @@ Docker Service
 
 詳細なDocker Service同士のarchitecture  
 
-![Docker architecture](architecture1.png)
+Docker architecture
 RAGは
 
 1. LLMでqueryの言語を検出し、英語でなければ英語に直す。
@@ -42,13 +42,13 @@ RAGは
 
 以下がRAGのarchitecture
 
-![RAG architecture](architecture2.png)
+RAG architecture
 
 ## ディレクトリ構造
 
 ```
 ai-paper-rag/
-├── README.md　　　　　　　　　　　　　　　　　         # プロジェクト全体を説明するこのファイル
+├── README.md                                     # プロジェクト全体を説明するこのファイル
 ├── LISENCE　　　　　　　　　                        # MIT License
 ├── .gitignore                                    # Git によるバージョン管理から除外したいファイルやディレクトリ一覧
 ├── run_dockers.sh                                # docker-compose.yml に定義されたサービスを、Dockerfile からイメージをビルドして起動するシェルスクリプト
@@ -60,61 +60,68 @@ ai-paper-rag/
 ├── architecture2.png                             # アーキテクチャの.png図2
 ├── config/                                       # Python の logging 設定ディレクトリ 
     ├── logging.yml                               # Python の logging 設定ファイル
-├── src/
-    ├── knowledgebase/                    
+├── src/                                          # ソースコード
+    ├── knowledgebase/                            # RAGデータベース更新
     │   ├── Dockerfile                            # main.py を実行するための knowledgebase イメージを作る Dockerfile
     │   ├── requirements.txt                      # knowledgebase イメージにインストールする Python パッケージの依存関係
-    │   ├── main.py                               # scheduler サービスからの HTTP リクエストを受け取ったら、update_knowledgebase.py を実行するファイル
-    │   ├── update_knowledgebase.py               # 
-    │   ├── create_current_and_previous_json.py   # create_current_temp_json.pyを実行し、create_previous_temp_json.py
+    │   ├── main.py                               # scheduler サービスからの HTTP リクエストを受け取ったら、データベース更新指示
+    │   ├── update_knowledgebase.py               # データベース更新
+    │   ├── update_chroma.py                      # ChromaDB更新
+    │   ├── create_addition_and_deletion_json.py  # ChromaDB追加論文・削除論文のリスト作成
+    │   ├── create_current_and_previous_json.py   # 更新後と更新前の論文リスト作成
+    │   ├── create_current_temp_json.py           # 更新後の論文リスト作成
+    │   ├── create_previous_temp_json.py          # 更新前の論文リスト作成
     │   ├── acquire_all_categories.py             # 全カテゴリの論文を取得
-    │   ├── acquire_latest_arxiv_data.py          # 最新のarXivデータを取得
-    │   ├── create_addition_and_deletion_json.py  # 追加・削除論文のJSONを作成
-    │   ├── create_current_and_previous_json.py   # 最新と以前の論文JSONを作成
-    │   ├── create_current_temp_json.py           # 最新の論文一時JSONを作成
-    │   ├── create_previous_temp_json.py          # 以前の論文一時JSONを作成
-    │   ├── delete_previous_json.py               # 以前の論文JSONを削除
-    │   ├── fetch_arxiv_papers.py                 # arXivから論文データをフェッチ
-    │   ├── main.py                               # knowledgebaseサービスのFastAPIアプリ
-    │   ├── merge_json_for_all_caterogies.py # 全カテゴリのJSONをマージ
-    │   ├── requirements.txt              # knowledgebaseサービスの依存関係
-    │   ├── save_temp_json_to_json.py     # 一時JSONを永続JSONとして保存
-    │   ├── update_chroma.py              # ChromaDBを更新
-    │   └──
-    ├── rag/                       # RAG（Retrieval-Augmented Generation）サービス
-    │   ├── ai_paper_rag.py               # RAGシステムのコアロジック
-    │   ├── Dockerfile                    # Dockerfile for RAG service
-    │   ├── main.py                       # RAGサービスのFastAPIアプリ
-    │   └── requirements.txt              # RAGサービスの依存関係
-    ├── scheduler/                        # 知識ベース更新を定期実行するサービス
-    │   ├── Dockerfile                    # Dockerfile for scheduler service
-    │   ├── main.py                       # schedulerサービスのメインアプリ
-    │   ├── requirements.txt              # schedulerサービスの依存関係
-    │   └── run_task.py                   # スケジュールされたタスクの実行ロジック
+    │   ├── merge_json_for_all_caterogies.py      # 全カテゴリの論文をマージ
+    │   ├── acquire_latest_arxiv_data.py          # 指定カテゴリの論文を取得
+    │   ├── fetch_arxiv_papers.py                 # arXiv APIから論文取得
+    │   ├── delete_previous_json.py               # 更新前の論文JSONを削除 
+    │   └── save_temp_json_to_json.py             # 一時JSONを永続JSONとして保存
+    ├── rag/                                      # RAGサービス
+    │   ├── Dockerfile                            # main.py を実行するための rag イメージを作る Dockerfile
+    │   ├── requirements.txt                      # RAGサービスの依存関係
+    │   ├── main.py                               # RAGサービスのFastAPIアプリ
+    │   ├── ai_paper_rag.py                       # RAGシステム全体のパイプライン
+    │   ├── detect_language_and_translate.py      # LLMで言語判定と英語翻訳
+    │   ├── build_system_prompt.py                # システムプロンプトを生成 
+    │   ├── call_llm.py                           # LLM呼び出し
+    │   ├── extract_keywords.py                   # 文字列からキーワードを抽出し、重複を除いてリスト化
+    │   ├── HybridSearch.py                       # ベクトル検索とキーワード検索を組み合わせて論文を探す HybridSearch クラス
+    │   ├── format_observation.py                 # ハイブリッド検索結果のフォーマット整形
+    │   ├── translate_to_target_language.py       # LLMで英語を元の言語に戻す
+    │   ├── compress_with_query.py                # 論文のメタデータを LLM に渡して、質問に関連する論文だけ抽出・要約
+    │   ├── get_current_date.py                   # 今日の日付を取得
+    │   ├── safe_json_loads.py                    # LLM が返したJSON を修復して安全に json.load
+    │   ├── split_content.py                      # 論文テキストをtitleとabstructに分割
+    ├── scheduler/                                # 知識ベース更新を定期実行するサービス
+    │   ├── Dockerfile                            # main.py を実行するための scheduler イメージを作る Dockerfile
+    │   ├── requirements.txt                      # schedulerサービスの依存関係
+    │   ├── main.py                               # **cron("* * * * *")を編集して定時実行変更可能(UTCで設定)
+    │   └── run_task.py                           # knowledgebaseサービスに定時実行のHTTPリクエスト
     └── ui/
-        ├── Dockerfile                    # UI アプリをコンテナ化するための設定ファイル。ビルド手順や実行環境を定義する。
-        ├── public/                       # 静的ファイルを配置するフォルダ。ビルド時にそのまま出力される。
-        │   ├── favicon.svg               # ブラウザタブに表示されるアイコン。
-        │   └── icons.svg                 # UI 内で利用する SVG アイコン集。
-        ├── src/                          # React アプリのメインソースコード。
-        │   ├── assets/                   # 画像やロゴなどの静的アセット。
-        │   │   ├── hero.png              # トップページなどで使うヒーロー画像。
-        │   │   ├── react.svg             # React ロゴ。
-        │   │   └── vite.svg              # Vite ロゴ。
-        │   ├── machines/                 # 状態遷移をまとめて管理するディレクトリ。
-        │   │   └── searchMachine.ts      # XState の状態遷移定義ファイル
-        │   ├── App.css                   # App.tsx 用のスタイル。
-        │   ├── App.tsx                   # アプリのメインコンポーネント
-        │   ├── index.css                 # 全体に適用されるグローバル CSS。
-        │   └── main.tsx                  # React アプリのエントリーポイント。ReactDOM.createRoot などを実行。
-        ├── eslint.config.js              # コード品質チェック（ESLint）の設定。
-        ├── index.html                    # アプリのエントリ HTML。<div id="root"> などを定義。
-        ├── package-lock.json             # 依存関係のバージョン固定ファイル。
-        ├── package.json                  # 依存パッケージ、スクリプト、プロジェクト情報を管理。
-        ├── tsconfig.app.json             # アプリ用 TypeScript 設定（ビルド対象などを限定）。
-        ├── tsconfig.json                 # TypeScript 全体設定。
-        ├── tsconfig.node.json            # Node.js 用 TypeScript 設定（Vite 設定ファイルなどに適用）。
-        └── vite.config.ts                # Vite のビルド・開発サーバー設定。
+        ├── Dockerfile                            # UI アプリをコンテナ化するための設定ファイル。ビルド手順や実行環境を定義する。
+        ├── public/                               # 静的ファイルを配置するフォルダ。ビルド時にそのまま出力される。
+        │   ├── favicon.svg                       # ブラウザタブに表示されるアイコン。
+        │   └── icons.svg                         # UI 内で利用する SVG アイコン集。
+        ├── src/                                  # React アプリのメインソースコード。
+        │   ├── assets/                           # 画像やロゴなどの静的アセット。
+        │   │   ├── hero.png                      # トップページなどで使うヒーロー画像。
+        │   │   ├── react.svg                     # React ロゴ。
+        │   │   └── vite.svg                      # Vite ロゴ。
+        │   ├── machines/                         # 状態遷移をまとめて管理するディレクトリ。
+        │   │   └── searchMachine.ts              # XState の状態遷移定義ファイル
+        │   ├── App.css                           # App.tsx 用のスタイル。
+        │   ├── App.tsx                           # アプリのメインコンポーネント
+        │   ├── index.css                         # 全体に適用されるグローバル CSS。
+        │   └── main.tsx                          # React アプリのエントリーポイント。ReactDOM.createRoot などを実行。
+        ├── eslint.config.js                      # コード品質チェック（ESLint）の設定。
+        ├── index.html                            # アプリのエントリ HTML。<div id="root"> などを定義。
+        ├── package-lock.json                     # 依存関係のバージョン固定ファイル。
+        ├── package.json                          # 依存パッケージ、スクリプト、プロジェクト情報を管理。
+        ├── tsconfig.app.json                     # アプリ用 TypeScript 設定（ビルド対象などを限定）。
+        ├── tsconfig.json                         # TypeScript 全体設定。
+        ├── tsconfig.node.json                    # Node.js 用 TypeScript 設定（Vite 設定ファイルなどに適用）。
+        └── vite.config.ts                        # Vite のビルド・開発サーバー設定。
 ```
 
 ---
@@ -123,24 +130,71 @@ ai-paper-rag/
 
 ### Backend / Retrieval
 
-- Python 3.11-slim
+- Python
+- Docker
+- RAG
 - LangChain
 - ChromaDB
-- HuggingFace Embeddings
-- Gemini API（LLM）
+- HuggingFace
+- Gemini API (gemini-2.5-flash)
+- GCP(常時運用のために使用予定)
 
 ### Frontend
 
-- Streamlit
+- ReAct + Vite +XState(状態管理)
 
 ### Data Sources
 
 - arXiv API（論文メタデータ）
 
 ## セットアップ方法
+Linuxの場合
+### 1. リポジトリのクローン
+
+```bash
+git clone https://github.com/shogokajiwara/ai_paper_rag.git
+cd ai_paper_rag
+```
+
+### 2. RAGデータベースのダウンロード
+
+```bash
+curl -O https://pub-47d4e6cc65ee492f8a054d787287b0bc.r2.dev/cache.zip
+unzip cache.zip
+```
+
+### 3. Docker のインストール・起動
+
+```bash
+sudo apt update
+sudo apt install -y docker-ce docker-ce-cli containerd.io docker-compose-plugin
+```
+
+### 4. APIキーの準備
+
+以下からHugging FaceのAccess TokenとGoogle AI StudioのAPI keyを入手して、.bashrcに設定。
+[https://huggingface.co/settings/tokens](https://huggingface.co/settings/tokens)
+[https://aistudio.google.com/api-keys](https://aistudio.google.com/api-keys)
+
+```bash
+echo 'export HF_TOKEN="Your Hugging Face Access Token"' >> ~/.bashrc
+echo 'export GEMINI_API_KEY="Your Google AI Studio API key"' >> ~/.bashrc
+source ~/.bashrc
+```
+
+### 5. Docker Compose の起動
+
+```bash
+docker compose up -d --build
+```
+
+### 6. ログの表示
+
+```bash
+docker-compose logs -f
+```
 
 Mac OSの場合
-
 ### 1. リポジトリのクローン
 
 ```bash
@@ -173,15 +227,16 @@ GUIが起動するので、指示に従い操作
 ```bash
 echo 'export HF_TOKEN="Your Hugging Face Access Token"' >> ~/.bashrc
 echo 'export GEMINI_API_KEY="Your Google AI Studio API key"' >> ~/.bashrc
+source ~/.bashrc
 ```
 
-### 4. Docker Compose の起動
+### 5. Docker Compose の起動
 
 ```bash
 docker compose up -d --build
 ```
 
-### 5. ログの表示
+### 6. ログの表示
 
 ```bash
 docker-compose logs -f
