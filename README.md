@@ -363,7 +363,6 @@ AIの挙動とユーザーの期待との間のミスマッチに対処し、ヒ
 組織およびプロセスの変革:  
 
 ソフトウェアエンジニアリングのような分野におけるAIの適用は、エンジニアリングの範囲をコードのみに限定せず拡大することを認識し、既存のプロセスと制御の再設計が必要となること。  
-
 参照論文  
 Engaged AI Governance: Addressing the Last Mile Challenge Through Internal Expert Collaboration  
 Agentic Explainability at Scale: Between Corporate Fears and XAI Needs  
