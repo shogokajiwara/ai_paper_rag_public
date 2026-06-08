@@ -60,8 +60,8 @@ ai-paper-rag/
 ├── architecture1.png                             # アーキテクチャの.png図1
 ├── architecture2.png                             # アーキテクチャの.png図2
 ├── config/                                       # Python の logging 設定ディレクトリ 
-    ├── logging.yml                               # Python の logging 設定ファイル
-├── src/                                          # ソースコード
+│   └── logging.yml                               # Python の logging 設定ファイル
+└── src/                                          # ソースコード
     ├── knowledgebase/                            # RAGデータベース更新
     │   ├── Dockerfile                            # main.py を実行するための knowledgebase イメージを作る Dockerfile
     │   ├── requirements.txt                      # knowledgebase イメージにインストールする Python パッケージの依存関係
@@ -93,7 +93,7 @@ ai-paper-rag/
     │   ├── compress_with_query.py                # 論文のメタデータを LLM に渡して、質問に関連する論文だけ抽出・要約
     │   ├── get_current_date.py                   # 今日の日付を取得
     │   ├── safe_json_loads.py                    # LLM が返したJSON を修復して安全に json.load
-    │   ├── split_content.py                      # 論文テキストをtitleとabstructに分割
+    │   └── split_content.py                      # 論文テキストをtitleとabstructに分割
     ├── scheduler/                                # 知識ベース更新を定期実行するサービス
     │   ├── Dockerfile                            # main.py を実行するための scheduler イメージを作る Dockerfile
     │   ├── requirements.txt                      # schedulerサービスの依存関係
