@@ -41,7 +41,7 @@ RAGは
 4. 3で取り出された論文をLLMでqueryに関係あるか判定させ、関係あるもののみ、queryに対する回答を抽出、要約。
 5. 4の結果をLLMでまとめて、1で検出した言語に直し、4で関係あると判定された論文とともに結果を出力
 
-以下がRAGのarchitecture
+RAG architecture
 
 ![Figure](architecture2.png)
 
@@ -258,49 +258,48 @@ docker-compose logs -f
 
 ---
 
-解答例
-質問
-MuZeroやDreamerの最新の実装例について教えて
-回答
-提供された要約に基づくと、議論された最新の実装例はDreamerに関連していますが、これらの論文にはMuZeroは言及されていません。
+解答例  
+質問  
+MuZeroやDreamerの最新の実装例について教えて  
+回答  
+提供された要約に基づくと、議論された最新の実装例はDreamerに関連していますが、これらの論文にはMuZeroは言及されていません。  
 
-以下に、Dreamerの最新の実装例を挙げます。
+以下に、Dreamerの最新の実装例を挙げます。  
 
-KAN-Dreamer: この実装は、Kolmogorov-Arnold Networks (KANs) を DreamerV3 フレームワークに統合しています。KANsは、ワールドモデル内の従来のMulti-Layer Perceptrons (MLPs) を置き換えます。これは、モデルベース強化学習プロセスの効率と解釈可能性を向上させることを目指しています。
-InDRiVE: これは、自動運転向けに設計された内発的報酬手法です。これは、好奇心を通じて車両の探索を推進するために、Dreamerベースのフレームワークを活用しています。InDRiVEは、自動運転シナリオにおいて、DreamerV2およびDreamerV3ベースラインと比較して、優れたロバストネスとデータ効率を示しました。
+KAN-Dreamer: この実装は、Kolmogorov-Arnold Networks (KANs) を DreamerV3 フレームワークに統合しています。KANsは、ワールドモデル内の従来のMulti-Layer Perceptrons (MLPs) を置き換えます。これは、モデルベース強化学習プロセスの効率と解釈可能性を向上させることを目指しています。  
+InDRiVE: これは、自動運転向けに設計された内発的報酬手法です。これは、好奇心を通じて車両の探索を推進するために、Dreamerベースのフレームワークを活用しています。InDRiVEは、自動運転シナリオにおいて、DreamerV2およびDreamerV3ベースラインと比較して、優れたロバストネスとデータ効率を示しました。  
+参照論文  
+KAN-Dreamer: Benchmarking Kolmogorov-Arnold Networks as Function Approximators in World Models  
+InDRiVE: Intrinsic Disagreement based Reinforcement for Vehicle Exploration through Curiosity Driven Generalized World Model  
 
-参照論文
-KAN-Dreamer: Benchmarking Kolmogorov-Arnold Networks as Function Approximators in World Models
-InDRiVE: Intrinsic Disagreement based Reinforcement for Vehicle Exploration through Curiosity Driven Generalized World Model
+質問  
+POMDPの最新の応用例を教えて  
+回答  
+提供された研究論文の要約に基づき、POMDPの最新の応用例を以下に示します。  
 
-質問
-POMDPの最新の応用例を教えて
-回答
-提供された研究論文の要約に基づき、POMDPの最新の応用例を以下に示します。
+ロボティクス:  
+堅牢な器用な把持（Robust Dexterous Grasping）: リスク感応型POMDPが、接触および物体の姿勢に関する不確実性に対処する際の成功率と効率を向上させるため、ロボットの把持獲得に用いられています。  
+一般的なロボティクスにおけるロバストネス解析（General Robotics Robustness Analysis）: POMDPは、様々なロボティクスシナリオにおいて、観測摂動に対するポリシーのロバストネスを解析するために適用されます。  
+自律システム:  
+ランタイム安全シールド（Runtime Safety Shielding）: 知覚の不確実性によるセンサー読み取りの誤分類が原因で発生する危険な決定を防ぐため、自律システムにランタイム安全シールドを提供するために区間POMDPが使用されます。  
+デジタルツイン:  
+エラー伝播の軽減（Error Propagation Mitigation）: POMDPは、モジュラー型デジタルツインにおけるエラー伝播を軽減するために適用され、特にベイズフィルタリングと信念の更新を通じて不完全なレジーム分類を考慮に入れます。  
+サイバー物理システム（CPS）:  
+センサー攻撃の検出と回復（Sensor Attack Detection and Recovery）: 信頼性の高い状態推定を確保するため、センサーの偽データ注入攻撃を検出・回復するための閾値ベースのプロービング戦略を開発するために、簡略化されたPOMDP定式化が活用されます。  
+オペレーションズリサーチ:  
+POMDPは、オペレーションズリサーチにおいて、ポリシーのロバストネス解析のために一般的に適用されます。  
+ロバストなポリシー学習:  
+敵対的潜在状態学習（Adversarial Latent-State Training）: 潜在的な分布シフトがある部分観測可能ドメインにおいてポリシーのロバストネスを強化するため、敵対的潜在初期状態POMDPフレームワークが使用されます（バトルシップベンチマークで実証）。  
+参照論文  
+Robustness Analysis of POMDP Policies to Observation Perturbations  
+Optimal sequential decision-making for error propagation mitigation in digital twins  
+Interval POMDP Shielding for Imperfect-Perception Agents  
+Adversarial Latent-State Training for Robust Policies in Partially Observable Domains  
+Active Bayesian Inference for Robust Control under Sensor False Data Injection Attacks  
+Variational Neural Belief Parameterizations for Robust Dexterous Grasping under Multimodal Uncertainty  
 
-ロボティクス:
-堅牢な器用な把持（Robust Dexterous Grasping）: リスク感応型POMDPが、接触および物体の姿勢に関する不確実性に対処する際の成功率と効率を向上させるため、ロボットの把持獲得に用いられています。
-一般的なロボティクスにおけるロバストネス解析（General Robotics Robustness Analysis）: POMDPは、様々なロボティクスシナリオにおいて、観測摂動に対するポリシーのロバストネスを解析するために適用されます。
-自律システム:
-ランタイム安全シールド（Runtime Safety Shielding）: 知覚の不確実性によるセンサー読み取りの誤分類が原因で発生する危険な決定を防ぐため、自律システムにランタイム安全シールドを提供するために区間POMDPが使用されます。
-デジタルツイン:
-エラー伝播の軽減（Error Propagation Mitigation）: POMDPは、モジュラー型デジタルツインにおけるエラー伝播を軽減するために適用され、特にベイズフィルタリングと信念の更新を通じて不完全なレジーム分類を考慮に入れます。
-サイバー物理システム（CPS）:
-センサー攻撃の検出と回復（Sensor Attack Detection and Recovery）: 信頼性の高い状態推定を確保するため、センサーの偽データ注入攻撃を検出・回復するための閾値ベースのプロービング戦略を開発するために、簡略化されたPOMDP定式化が活用されます。
-オペレーションズリサーチ:
-POMDPは、オペレーションズリサーチにおいて、ポリシーのロバストネス解析のために一般的に適用されます。
-ロバストなポリシー学習:
-敵対的潜在状態学習（Adversarial Latent-State Training）: 潜在的な分布シフトがある部分観測可能ドメインにおいてポリシーのロバストネスを強化するため、敵対的潜在初期状態POMDPフレームワークが使用されます（バトルシップベンチマークで実証）。
-参照論文
-Robustness Analysis of POMDP Policies to Observation Perturbations
-Optimal sequential decision-making for error propagation mitigation in digital twins
-Interval POMDP Shielding for Imperfect-Perception Agents
-Adversarial Latent-State Training for Robust Policies in Partially Observable Domains
-Active Bayesian Inference for Robust Control under Sensor False Data Injection Attacks
-Variational Neural Belief Parameterizations for Robust Dexterous Grasping under Multimodal Uncertainty
-
-質問
-世界モデルを用いた自律型エージェントはある？
+質問  
+世界モデルを用いた自律型エージェントはある？  
 回答
 はい、自律エージェントは世界モデルを使用します。提供された要約は、エージェントが世界モデルに依拠するいくつかの事例とフレームワークを強調しています。
 エージェント的世界モデリングでは、予測環境モデルを必要とするエージェントについて議論し、予測が失敗した場合に自己修正する自律モデルであるL3 Evolverを紹介しています。これは本質的に世界モデルを使用しています。
