@@ -197,7 +197,8 @@ docker-compose logs -f
 ```
 
 Linuxの場合  
-Terminalを開き、
+
+Terminalを開き、作業ディレクトリで以下のコマンドを実行
 
 ### 1. リポジトリのクローン
 
@@ -245,7 +246,9 @@ docker compose up -d --build
 docker-compose logs -f
 ```
 
-Mac OSの場合
+Mac OSの場合  
+
+Terminalを開き、作業ディレクトリで以下のコマンドを実行
 
 ### 1. リポジトリのクローン
 
