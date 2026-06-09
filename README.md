@@ -30,7 +30,7 @@ Docker Service
 ```
 
 詳細なDocker Service同士のarchitecture
-![Figure](architecture1.png)
+Figure
 
 Docker architecture
 RAGは
@@ -43,7 +43,7 @@ RAGは
 
 RAG architecture
 
-![Figure](architecture2.png)
+Figure
 
 ## ディレクトリ構造
 
@@ -127,7 +127,7 @@ ai-paper-rag/
 
 ---
 
-##  使用技術
+## 使用技術
 
 ### Backend / Retrieval
 
@@ -152,26 +152,32 @@ ai-paper-rag/
 
 Windowsの場合  
 Windows PowerShellを開き、作業ディレクトリで以下のコマンドを実行
+
 ### 1. リポジトリのクローン
+
 ```powershell
 git clone https://github.com/shogokajiwara/ai_paper_rag.git
 cd ai_paper_rag
 ```
 
 ### 2. RAGデータベースのダウンロード
+
 ```powershell
 curl -O https://pub-47d4e6cc65ee492f8a054d787287b0bc.r2.dev/cache.zip
 tar -xf cache.zip
 ```
 
 ### 3. Docker Desktopのインストール・起動
+
 以下から Windows 版 Docker Desktop をダウンロード
-https://www.docker.com/products/docker-desktop/
+[https://www.docker.com/products/docker-desktop/](https://www.docker.com/products/docker-desktop/)
 インストール後、スタートメニューから Docker Desktop を起動
 GUI の指示に従ってセットアップ（WSL2 backend を有効化）
 
 ### 4. APIキーの準備
+
 以下からHugging FaceのAccess TokenとGoogle AI StudioのAPI keyを入手して、環境変数に設定。
+
 ```powershell
 setx HF_TOKEN "Your Hugging Face Access Token"
 setx GEMINI_API_KEY "Your Google AI Studio API key"
@@ -189,9 +195,9 @@ docker compose up -d --build
 docker-compose logs -f
 ```
 
-
 Linuxの場合
 Terminalを開き、
+
 ### 1. リポジトリのクローン
 
 ```bash
@@ -214,6 +220,7 @@ sudo apt install -y docker-ce docker-ce-cli containerd.io docker-compose-plugin
 ```
 
 ### 4. APIキーの準備
+
 以下からHugging FaceのAccess TokenとGoogle AI StudioのAPI keyを入手して、.bashrcに設定。
 [https://huggingface.co/settings/tokens](https://huggingface.co/settings/tokens)
 [https://aistudio.google.com/api-keys](https://aistudio.google.com/api-keys)
@@ -237,6 +244,7 @@ docker-compose logs -f
 ```
 
 Mac OSの場合
+
 ### 1. リポジトリのクローン
 
 ```bash
@@ -293,9 +301,8 @@ docker-compose logs -f
   例：「最近のLLMの安全性研究のトレンドを教えて」
 3. 「Search」ボタンを押すと、最新論文に基づく回答が生成され、使用された論文の一覧も確認できます。
 
+## 解答例
 
-
-## 解答例  
 (RAGのデータベース更新やLLMの安定性により変わる場合があります。)
 
 質問  
