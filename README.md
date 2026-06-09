@@ -170,8 +170,8 @@ cache.zip は1.74GBあるので、ダウンロードに時間がかかる。
 
 ### 3. Docker Desktopのインストール・起動
 
-以下サイトでDownload Docker Desktopをクリックし、Windows 版 Docker Desktop をダウンロード  
-[https://www.docker.com/products/docker-desktop/](https://www.docker.com/products/docker-desktop/)
+以下サイトで Download Docker Desktop をクリックし、Windows 版 Docker Desktop をダウンロード  
+[https://www.docker.com/products/docker-desktop/](https://www.docker.com/products/docker-desktop/)  
 インストール後、スタートメニューから Docker Desktop を起動
 GUI の指示に従ってセットアップ（WSL2 backend を有効化）
 
