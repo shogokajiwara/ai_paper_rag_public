@@ -163,7 +163,7 @@ cd ai_paper_rag
 ### 2. RAGデータベースのダウンロード
 
 ```powershell
-curl -O https://pub-47d4e6cc65ee492f8a054d787287b0bc.r2.dev/cache.zip
+Invoke-WebRequest -Uri "https://pub-47d4e6cc65ee492f8a054d787287b0bc.r2.dev/cache.zip" -OutFile "cache.zip"
 tar -xf cache.zip
 ```
 
