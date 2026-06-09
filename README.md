@@ -161,11 +161,11 @@ cd ai_paper_rag
 ```
 
 ### 2. RAGデータベースのダウンロード
-
 ```powershell
 Invoke-WebRequest -Uri "https://pub-47d4e6cc65ee492f8a054d787287b0bc.r2.dev/cache.zip" -OutFile "cache.zip"
 tar -xf cache.zip
 ```
+cache.zip は1.74GBあるので、ダウンロードに時間がかかる。
 
 ### 3. Docker Desktopのインストール・起動
 
@@ -211,6 +211,7 @@ cd ai_paper_rag
 curl -O https://pub-47d4e6cc65ee492f8a054d787287b0bc.r2.dev/cache.zip
 unzip cache.zip
 ```
+cache.zip は1.74GBあるので、ダウンロードに時間がかかる。
 
 ### 3. Docker のインストール・起動
 
@@ -253,11 +254,11 @@ cd ai_paper_rag
 ```
 
 ### 2. RAGデータベースのダウンロード
-
 ```bash
 curl -O https://pub-47d4e6cc65ee492f8a054d787287b0bc.r2.dev/cache.zip
 unzip cache.zip
 ```
+cache.zip は1.74GBあるので、ダウンロードに時間がかかる。
 
 ### 3. Docker Desktopのインストール・起動
 
