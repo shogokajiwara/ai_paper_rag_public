@@ -152,7 +152,11 @@ ai-paper-rag/
 
 Windowsの場合  
 
-PowerShellを開き、作業ディレクトリで以下のコマンドを実行
+### 1. WSL2のインストール
+PowerShellを管理者権限で開き、以下を実行
+```powershell
+wsl --install
+```
 
 ### 1. リポジトリのクローン
 
@@ -170,9 +174,9 @@ cache.zip は1.74GBあるので、ダウンロードに時間がかかる。
 
 ### 3. Docker Desktopのインストール・起動
 
-以下サイトで Download Docker Desktop をクリックし、Windows 版 Docker Desktop をダウンロード  
+以下サイトで Download Docker Desktop (Download for Windows) をクリックし、Windows 版 Docker Desktop をダウンロード  
 [https://www.docker.com/products/docker-desktop/](https://www.docker.com/products/docker-desktop/)  
-インストール後、スタートメニューから Docker Desktop を起動
+ダウンロードしたDocker Desktop Installer.exe を実行し、GUIの指示に従いインストール。
 GUI の指示に従ってセットアップ（WSL2 backend を有効化）
 
 ### 4. APIキーの準備
