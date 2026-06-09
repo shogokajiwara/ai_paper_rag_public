@@ -152,53 +152,17 @@ ai-paper-rag/
 
 Windowsの場合  
 
-### 1. WSL2のインストール
+### 0. WSL2のインストール
 PowerShellを管理者権限で開き、以下を実行
 ```powershell
 wsl --install
 ```
-
-### 1. リポジトリのクローン
-
+PowerShellを操作してUnixのuser accountやpasswordを設定する。
+PowerShellを非管理者権限で開き直して、以下を実行し、WSL2のターミナルに入る。
 ```powershell
-git clone https://github.com/shogokajiwara/ai_paper_rag.git
-cd ai_paper_rag
+wsl
 ```
-
-### 2. RAGデータベースのダウンロード
-```powershell
-Invoke-WebRequest -Uri "https://pub-47d4e6cc65ee492f8a054d787287b0bc.r2.dev/cache.zip" -OutFile "cache.zip"
-tar -xf cache.zip
-```
-cache.zip は1.74GBあるので、ダウンロードに時間がかかる。
-
-### 3. Docker Desktopのインストール・起動
-
-以下サイトで Download Docker Desktop (Download for Windows) をクリックし、Windows 版 Docker Desktop をダウンロード  
-[https://www.docker.com/products/docker-desktop/](https://www.docker.com/products/docker-desktop/)  
-ダウンロードしたDocker Desktop Installer.exe を実行し、GUIの指示に従いインストール。
-GUI の指示に従ってセットアップ（WSL2 backend を有効化）
-
-### 4. APIキーの準備
-
-以下からHugging FaceのAccess TokenとGoogle AI StudioのAPI keyを入手して、環境変数に設定。
-
-```powershell
-setx HF_TOKEN "Your Hugging Face Access Token"
-setx GEMINI_API_KEY "Your Google AI Studio API key"
-```
-
-### 5. Docker Compose の起動
-
-```powershell
-docker compose up -d --build
-```
-
-### 6. ログの表示
-
-```powershell
-docker-compose logs -f
-```
+以下はLinuxの場合と同様である。
 
 Linuxの場合  
 
