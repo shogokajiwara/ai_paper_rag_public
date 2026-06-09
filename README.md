@@ -157,7 +157,7 @@ PowerShellを管理者権限で開き、以下を実行
 ```powershell
 wsl --install
 ```
-PowerShellを操作してUnixのuser accountやpasswordを設定する。
+PowerShellを操作してUnixのuser accountやpasswordを設定する。  
 PowerShellを非管理者権限で開き直して、以下を実行し、WSL2のターミナルに入る。
 ```powershell
 wsl
