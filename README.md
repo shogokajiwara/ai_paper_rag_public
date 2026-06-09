@@ -206,7 +206,7 @@ sudo usermod -aG docker $USER
 ### 4. APIキーの準備
 
 以下からHugging FaceのAccess TokenとGoogle AI StudioのAPI keyを入手して、.bashrcに設定。
-[https://huggingface.co/settings/tokens](https://huggingface.co/settings/tokens)
+[https://huggingface.co/settings/tokens](https://huggingface.co/settings/tokens)  
 [https://aistudio.google.com/api-keys](https://aistudio.google.com/api-keys)
 
 ```bash
