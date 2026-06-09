@@ -201,7 +201,13 @@ echo \
 sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 sudo usermod -aG docker $USER
 ```
-完了後 Linux に再ログインする。
+完了後 Linux に再ログインする。  
+WSL2の場合はPowerShellで
+```powershell
+wsl --shutdown
+wsl
+```
+を実行
 
 ### 4. APIキーの準備
 
