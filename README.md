@@ -30,7 +30,7 @@ Docker Service
 ```
 
 詳細なDocker Service同士のarchitecture
-Figure
+![Figure](architecture1.png)
 
 Docker architecture
 RAGは
@@ -43,7 +43,7 @@ RAGは
 
 RAG architecture
 
-Figure
+![Figure](architecture2.png)
 
 ## ディレクトリ構造
 
