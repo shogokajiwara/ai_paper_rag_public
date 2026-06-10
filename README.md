@@ -5,8 +5,8 @@ AI分野では毎日のように新しい研究成果が発表されます。し
 
 ## 機能概要
 
-- Open Archives InitiativeでarXivから対象カテゴリの最新1年分の論文のtitle,abstructを毎日取得し、データベースに保存。
-- 任意の言語でAIに関する質問を入力して"Search"を押すと、データベースから質問に関連する論文のtitle,abstructをハイブリッド検索(=ベクトル検索+キーワード検索)し(Retrieval)、
+- Open Archives InitiativeでarXivから対象カテゴリの最新1年分の論文のtitle,abstractを毎日取得し、データベースに保存。
+- 任意の言語でAIに関する質問を入力して"Search"を押すと、データベースから質問に関連する論文のtitle,abstractをハイブリッド検索(=ベクトル検索+キーワード検索)し(Retrieval)、
 質問との関連の有無を判定し、関連する論文の質問に対する回答を抽出して要約し(Augumented)
 関連する論文の要約をまとめて質問に対する回答を生成する(Generator)
 - 対象カテゴリ
@@ -93,7 +93,7 @@ ai-paper-rag/
     │   ├── compress_with_query.py                # 論文のメタデータを LLM に渡して、質問に関連する論文だけ抽出・要約
     │   ├── get_current_date.py                   # 今日の日付を取得
     │   ├── safe_json_loads.py                    # LLM が返したJSON を修復して安全に json.load
-    │   └── split_content.py                      # 論文テキストをtitleとabstructに分割
+    │   └── split_content.py                      # 論文テキストをtitleとabstractに分割
     ├── scheduler/                                # 知識ベース更新を定期実行するサービス
     │   ├── Dockerfile                            # main.py を実行するための scheduler イメージを作る Dockerfile
     │   ├── requirements.txt                      # schedulerサービスの依存関係

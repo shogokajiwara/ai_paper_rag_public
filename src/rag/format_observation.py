@@ -15,9 +15,9 @@ def format_observation(hybrid_docs: list[dict[str, Any]], user_question: str) ->
         meta = d["metadata"]
         logger.critical(f"meta = {meta}")
 
-        title, abstruct = split_content(content)
-        logger.critical(f"abstruct = {abstruct}")
-        compressed = compress_with_query(abstruct, user_question)
+        title, abstract = split_content(content)
+        logger.critical(f"abstract = {abstract}")
+        compressed = compress_with_query(abstract, user_question)
         logger.critical(f"compressed = {compressed}")
 
         if compressed["relevance"] == 1:
