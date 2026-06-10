@@ -7,7 +7,7 @@ AI分野では毎日のように新しい研究成果が発表されます。し
 
 - Open Archives InitiativeでarXivから対象カテゴリの最新1年分の論文のtitle,abstractを毎日取得し、データベースに保存。
 - 任意の言語でAIに関する質問を入力して"Search"を押すと、データベースから質問に関連する論文のtitle,abstractをハイブリッド検索(=ベクトル検索+キーワード検索)し(Retrieval)、
-質問との関連の有無を判定し、関連する論文の質問に対する回答を抽出して要約し(Augumented)
+質問との関連の有無を判定し、関連する論文の質問に対する回答を抽出して要約し(Augmented)
 関連する論文の要約をまとめて質問に対する回答を生成する(Generator)
 - 対象カテゴリ
 ["cs.AI", "cs.LG", "stat.ML", "cs.CL", "cs.CV", "cs.NE"] (ai-paper-rag/src/knowledgebase/main.pyで変更可能)
@@ -50,7 +50,7 @@ RAG architecture
 ```
 ai-paper-rag/
 ├── README.md                                     # プロジェクト全体を説明するこのファイル
-├── LISENCE　　　　　　　　　                        # MIT License
+├── LICENSE　　　　　　　　　                        # MIT License
 ├── .gitignore                                    # Git によるバージョン管理から除外したいファイルやディレクトリ一覧
 ├── run_dockers.sh                                # docker-compose.yml に定義されたサービスを、Dockerfile からイメージをビルドして起動するシェルスクリプト
 ├── show_log.sh                                   # docker composeのログをリアルタイム表示
@@ -73,7 +73,7 @@ ai-paper-rag/
     │   ├── create_current_temp_json.py           # 更新後の論文リスト作成
     │   ├── create_previous_temp_json.py          # 更新前の論文リスト作成
     │   ├── acquire_all_categories.py             # 全カテゴリの論文を取得
-    │   ├── merge_json_for_all_caterogies.py      # 全カテゴリの論文をマージ
+    │   ├── merge_json_for_all_categories.py      # 全カテゴリの論文をマージ
     │   ├── acquire_latest_arxiv_data.py          # 指定カテゴリの論文を取得
     │   ├── fetch_arxiv_papers.py                 # arXiv APIから論文取得
     │   ├── delete_previous_json.py               # 更新前の論文JSONを削除 
@@ -142,7 +142,7 @@ ai-paper-rag/
 
 ### Frontend
 
-- ReAct + Vite +XState(状態管理)
+- React + Vite +XState(状態管理)
 
 ### Data Sources
 
