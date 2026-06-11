@@ -10,7 +10,7 @@ AI分野では毎日のように新しい研究成果が発表されます。し
 質問との関連の有無を判定し、関連する論文の質問に対する回答を抽出して要約し(Augmented)
 関連する論文の要約をまとめて質問に対する回答を生成する(Generator)
 - 対象カテゴリ
-["cs.AI", "cs.LG", "stat.ML", "cs.CL", "cs.CV", "cs.NE"] (ai-paper-rag/src/knowledgebase/main.pyで変更可能)
+["cs.AI", "cs.LG", "stat.ML", "cs.CL", "cs.CV", "cs.NE"] (ai_paper_rag/src/knowledgebase/main.pyで変更可能)
 - UI([http://localhost:5173](http://localhost:5173))
   - 上段：自然言語での質問入力欄  
   - 下段：RAG の回答＋使用論文の一覧
@@ -142,7 +142,7 @@ ai-paper-rag/
 
 ### Frontend
 
-- React + Vite +XState(状態管理)
+- React + Vite + XState(状態管理)
 
 ### Data Sources
 
@@ -184,7 +184,7 @@ sudo apt install unzip
 unzip cache.zip
 ```
 cache.zip は1.74GBあるので、ダウンロードに時間がかかる。
-ai_paper_arg/cache/ ディレクトリが作成され、その内部にRAGデータベースが展開される。
+ai_paper_rag/cache/ ディレクトリが作成され、その内部にRAGデータベースが展開される。
 
 ### 3. Docker のインストール
 
